@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Randy Roberts | Software Engineer</title>
+<meta name="description" content="Resume of Randy Roberts, flight simulation software engineer working in C++, C#, and Java on real-time and distributed simulators.">
+<meta property="og:title" content="Randy Roberts | Flight Simulation Software Engineer">
+<meta property="og:description" content="Flight simulation software engineer working on real-time and distributed simulators.">
+<meta property="og:type" content="profile">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2317303f'/%3E%3Cpath d='M8 38h48' stroke='%23e3a63a' stroke-width='4'/%3E%3Ctext x='32' y='31' font-family='Arial' font-weight='700' font-size='22' fill='%23f3f6f8' text-anchor='middle'%3ERR%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f3f6f8;
+    --surface: #ffffff;
+    --ink: #17222b;
+    --muted: #55636e;
+    --rule: #d4dce2;
+    --accent: #17303f;
+    --horizon: #c98a12;
+    --link: #1d5b85;
+    --display: "B612", "Segoe UI", system-ui, sans-serif;
+    --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1a22;
+      --surface: #15232d;
+      --ink: #e6ecf0;
+      --muted: #9aa9b4;
+      --rule: #2a3a46;
+      --accent: #cfe0ea;
+      --horizon: #e3a63a;
+      --link: #8cc4ea;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  a { color: var(--link); text-underline-offset: 0.18em; }
+  a:focus-visible, .download:focus-visible {
+    outline: 3px solid var(--horizon);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .page {
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 4rem;
+  }
+
+  /* Header: the name sits above a horizon line, like an attitude indicator */
+  header {
+    position: relative;
+    padding-bottom: 1.75rem;
+    margin-bottom: 2.5rem;
+  }
+  header::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--horizon) 0 4.5rem, var(--rule) 4.5rem);
+  }
+  .masthead {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.25rem 2rem;
+  }
+  h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.25rem, 6vw, 3.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.5rem;
+    color: var(--accent);
+  }
+  .role {
+    font-family: var(--display);
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin: 0;
+  }
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.5rem;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.98rem;
+  }
+  .download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 0.7rem 1.1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .download:hover { filter: brightness(1.15); }
+  .download svg { width: 1.05em; height: 1.05em; }
+
+  /* Sections */
+  section { margin-bottom: 2.75rem; }
+  h2 {
+    font-family: var(--display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 0 0 1.25rem;
+  }
+
+  .skills {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 0.5rem 1.25rem;
+    margin: 0;
+  }
+  .skills dt {
+    font-family: var(--display);
+    font-size: 0.92rem;
+    color: var(--muted);
+    padding-top: 0.12rem;
+  }
+  .skills dd { margin: 0; }
+
+  /* Log-style entries: dates in the gutter, details on the right */
+  .entry {
+    display: grid;
+    grid-template-columns: 9.5rem 1fr;
+    gap: 0 1.75rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .entry:first-of-type { border-top: 0; padding-top: 0; }
+  .when {
+    font-family: var(--display);
+    font-size: 0.88rem;
+    color: var(--muted);
+    padding-top: 0.25rem;
+  }
+  .what h3 {
+    font-family: var(--display);
+    font-size: 1.08rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.35;
+  }
+  .where {
+    margin: 0.15rem 0 0.6rem;
+    color: var(--muted);
+  }
+  .what ul { margin: 0; padding-left: 1.1rem; }
+  .what li { margin-bottom: 0.45rem; }
+  .what li::marker { color: var(--horizon); }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 1.25rem;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  @media (max-width: 640px) {
+    .page { padding: 2.25rem 1rem 3rem; }
+    .entry { grid-template-columns: 1fr; }
+    .when { padding-top: 0; margin-bottom: 0.2rem; }
+    .skills { grid-template-columns: 1fr; gap: 0.1rem; }
+    .skills dd { margin-bottom: 0.6rem; }
+  }
+
+  @media print {
+    :root {
+      --bg: #fff; --surface: #fff; --ink: #000; --muted: #333;
+      --rule: #bbb; --accent: #000; --link: #000;
+    }
+    body { font-size: 10.5pt; }
+    .page { padding: 0; max-width: none; }
+    .download, footer { display: none; }
+    .entry { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <header>
+    <div class="masthead">
+      <div>
+        <h1>Randy Roberts</h1>
+        <p class="role">Flight Simulation Software Engineer</p>
+      </div>
+      <a class="download" href="resume.pdf" download="Randy-Roberts-Resume.pdf">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Download PDF
+      </a>
+    </div>
+    <ul class="contact">
+      <li><a href="mailto:randyro1999@gmail.com">randyro1999@gmail.com</a></li>
+      <li><a href="https://linkedin.com/in/randy-roberts/">linkedin.com/in/randy-roberts</a></li>
+      <li><a href="https://github.com/RandyRoberts99">github.com/RandyRoberts99</a></li>
+    </ul>
+  </header>
+
+  <section aria-labelledby="skills">
+    <h2 id="skills">Skills</h2>
+    <dl class="skills">
+      <dt>Languages</dt>
+      <dd>C#, C++, Java, Python, JavaScript, TypeScript, HTML, CSS, Fortran, Lua</dd>
+      <dt>Frameworks</dt>
+      <dd>Unity, React, Next.js, Qt, WPF, WinForms, Retool</dd>
+      <dt>Tools</dt>
+      <dd>Windows, Linux, WSL, Docker, Visual Studio, CMake, Git, JIRA, Confluence, Jenkins</dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="experience">
+    <h2 id="experience">Experience</h2>
+
+    <article class="entry">
+      <div class="when">Aug 2025 – Present</div>
+      <div class="what">
+        <h3>Flight Simulation Software Engineer</h3>
+        <p class="where">Boeing, St. Louis, MO</p>
+        <ul>
+          <li>Diagnose and resolve input defects on simulated aircraft displays, so pilot interactions register reliably during customer training.</li>
+          <li>Refactor the aircraft display data pipeline so each display runs at its own configurable refresh rate, decoupling systems that previously shared a single update cycle.</li>
+          <li>Deliver quality-of-life improvements to the team's internal process manager, including showing which machine each process runs on and opening an executable's file location in one click, making it faster to locate and manage hundreds of simulation processes across dozens of machines.</li>
+          <li>Track down and fix defects in the core simulation logic across C++, C#, and Fortran subsystems, documenting root causes so the team can diagnose similar issues faster.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="when">Jun 2024 – Jun 2025</div>
+      <div class="what">
+        <h3>Flight Simulation Software Engineer</h3>
+        <p class="where">AVT Simulation, Orlando, FL</p>
+        <ul>
+          <li>Architected and built a C++ radio communications microservice, shipped to a customer, that relays traffic among dozens of simulated radios across a distributed simulator over UDP.</li>
+          <li>Implemented a UDP interface between the radio client and the simulation, defining the message protocol that keeps radio state and transmissions synchronized in real time during live training.</li>
+          <li>Designed a runtime process manager in Java, delivered to a customer through Agile sprint cycles, that launches and terminates simulation executables on demand, automating process control during live runs.</li>
+          <li>Added logging utilities to the after-action review tools, giving developers clearer visibility into system behavior and speeding up debugging of training sessions.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="when">Mar 2024 – Jun 2024</div>
+      <div class="what">
+        <h3>Software Engineer Intern</h3>
+        <p class="where">Alidade Systems, Remote</p>
+        <ul>
+          <li>Designed and prototyped the company's financial forecasting and budgeting user interface in Retool and JavaScript across frontend and backend, partnering with engineers and product leads to deliver it to the company's first clients.</li>
+          <li>Enabled budgets to scale in both breadth and depth by designing data structures for hierarchical financial data. This work was featured in product demos to prospective business partners.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="when">Jul 2023 – Dec 2023</div>
+      <div class="what">
+        <h3>Web Developer Intern</h3>
+        <p class="where">Arising.co, Orlando, FL</p>
+        <ul>
+          <li>Shipped three production Next.js websites for Arising's clients and partners, owning each from build through launch and ongoing maintenance against client requirements and deadlines.</li>
+          <li>Raised the performance and search visibility of client sites by establishing consistent frontend optimization practices across projects, so every launch met the same quality bar.</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <section aria-labelledby="projects">
+    <h2 id="projects">Projects</h2>
+    <article class="entry">
+      <div class="when">In progress</div>
+      <div class="what">
+        <h3>Unity Movement Framework</h3>
+        <p class="where"><a href="https://github.com/RandyRoberts99/UnityMovementFramework">github.com/RandyRoberts99/UnityMovementFramework</a></p>
+        <ul>
+          <li>Build a reusable foundation for character movement in video games, so new moves like dashing or wall running can be added as plug-ins without rewriting existing code.</li>
+          <li>Design a simple framework for other developers to pick up and extend, with clear organization and documentation, and controls that feel smooth and responsive on any hardware.</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <section aria-labelledby="education">
+    <h2 id="education">Education</h2>
+    <article class="entry">
+      <div class="when">May 2024</div>
+      <div class="what">
+        <h3>BS in Computer Science</h3>
+        <p class="where">University of Central Florida</p>
+      </div>
+    </article>
+  </section>
+
+  <footer>
+    Prefer a copy to keep? <a href="resume.pdf" download="Randy-Roberts-Resume.pdf">Download the PDF version</a>.
+  </footer>
+
+</main>
+</body>
+</html>
